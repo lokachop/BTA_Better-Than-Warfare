@@ -1,35 +1,38 @@
 {
 	"schemaVersion": 1,
-	"id": "examplemod",
+	"id": "betterthanwarfare",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This mod aims to help new BTA modders.",
+	"name": "Better Than Warfare",
+	"description": "A sub-par weapon mod for BTA.",
 	"authors": [
-		"Turnip Labs"
+		"Lokachop"
 	],
 	"contact": {
 		"homepage": "",
 		"sources": ""
 	},
 	"icon": "icon.png",
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"turniplabs.examplemod.ExampleMod"
+			"lokachop.betterthanwarfare.BetterThanWarfareMod"
 		],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"lokachop.betterthanwarfare.BetterThanWarfareMod"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"lokachop.betterthanwarfare.BetterThanWarfareMod"
+		],
+		"initModels": [
+			"lokachop.betterthanwarfare.ModModels"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"lokachop.betterthanwarfare.BetterThanWarfareMod"
 		]
 	},
 	"mixins": [
-		"examplemod.mixins.json"
+		"betterthanwarfare.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${fabricloader}",

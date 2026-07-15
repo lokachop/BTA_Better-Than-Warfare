@@ -1,0 +1,34 @@
+package lokachop.betterthanwarfare;
+
+import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.sound.SoundRepository;
+import net.minecraft.core.sound.SoundTypes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import turniplabs.halplibe.util.GameStartEntrypoint;
+import turniplabs.halplibe.util.RecipeEntrypoint;
+
+public class BetterThanWarfareMod implements ModInitializer, RecipeEntrypoint, GameStartEntrypoint {
+	public static final String MOD_ID = "betterthanwarfare";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	@Override
+	public void onInitialize() {
+		LOGGER.info("BetterThanWarfare initialized.");
+	}
+
+	@Override
+	public void onRecipesReady() {}
+
+	@Override
+	public void initNamespaces() {}
+
+	@Override
+	public void beforeGameStart() {
+		ModItems.RegisterItems();
+		SoundRepository.registerNamespace(MOD_ID);
+		SoundTypes.loadSoundsJson(MOD_ID);
+	}
+
+	@Override
+	public void afterGameStart() {}
+}

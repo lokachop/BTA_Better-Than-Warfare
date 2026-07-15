@@ -1,0 +1,14 @@
+item.betterthanwarfare.BasicPistol.name=Basic Pistol
+item.betterthanwarfare.BasicPistol.desc=Basic debug pistol, doesn't need ammo.
+
+item.betterthanwarfare.Receiver.name=Receiver
+item.betterthanwarfare.Receiver.desc=Component used in making guns.
+
+item.betterthanwarfare.BasicAmmo.name=Basic Ammo
+item.betterthanwarfare.BasicAmmo.desc=Basic Ammunition.
+
+item.betterthanwarfare.AKRifle.name=Basic AK
+item.betterthanwarfare.AKRifle.desc=Basic debug AK rifle, takes AK ammo.
+
+item.betterthanwarfare.AKAmmo.name=AK Ammo
+item.betterthanwarfare.AKAmmo.desc=Ammunition for the AK.

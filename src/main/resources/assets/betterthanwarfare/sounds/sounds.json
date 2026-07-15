@@ -1,0 +1,49 @@
+{
+  "gun.shot.generic": {
+    "subtitle": "subtitles.betterthanwarfare.gun.shot.generic",
+    "sounds": [
+      "gun/shot.ogg"
+    ]
+  },
+  "gun.dryfire.generic": {
+    "subtitle": "subtitles.betterthanwarfare.gun.dryfire.generic",
+    "sounds": [
+      "gun/dryfire.ogg"
+    ]
+  },
+  "gun.reload.generic": {
+    "subtitle": "subtitles.betterthanwarfare.gun.reload.generic",
+    "sounds": [
+      "gun/reload.ogg"
+    ]
+  },
+  "gun.slide_open.generic": {
+    "subtitle": "subtitles.betterthanwarfare.gun.slide_open.generic",
+    "sounds": [
+      "gun/slide_open.ogg"
+    ]
+  },
+
+  "gun.shot.ak":{
+    "subtitle": "subtitles.betterthanwarfare.gun.shot.ak",
+    "sounds": [
+      "ak/shot.ogg"
+    ]
+  },
+  "gun.dryfire.ak":{
+    "subtitle": "subtitles.betterthanwarfare.gun.dryfire.ak",
+    "sounds": [
+      "ak/dry_fire.ogg"
+    ]
+  },
+  "gun.reload.ak": {
+    "subtitle": "subtitles.betterthanwarfare.gun.reload.ak",
+    "sounds": [
+      "ak/magazine_insert_full.ogg"
+    ]
+  },
+  "gun.slide_open.ak": {
+    "subtitle": "subtitles.betterthanwarfare.gun.slide_open.ak",
+    "sounds": []
+  }
+}
