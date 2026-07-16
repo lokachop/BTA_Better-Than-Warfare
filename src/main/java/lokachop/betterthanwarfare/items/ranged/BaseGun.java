@@ -1,15 +1,19 @@
 package lokachop.betterthanwarfare.items.ranged;
 
+import lokachop.betterthanwarfare.entities.ProjectileBullet;
 import lokachop.betterthanwarfare.interfaces.IGunDetailsOverlay;
+import lokachop.betterthanwarfare.util.RaycastUtil;
 import net.minecraft.client.gui.hud.HudIngame;
 import net.minecraft.client.render.Font;
 import net.minecraft.client.render.entity.EntityRendererItem;
 import net.minecraft.core.entity.Entity;
+import net.minecraft.core.entity.Mob;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
 import net.minecraft.core.util.phys.HitResult;
+import net.minecraft.core.util.phys.Vec3;
 import net.minecraft.core.world.World;
 
 import java.util.Arrays;
@@ -44,6 +48,9 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 	public abstract int getReloadDelay(); // in ticks
 	public abstract String getAmmoType();
 	public abstract String getSoundType();
+	public abstract int getBulletDamage();
+	public abstract float getBulletVelocity();
+	public abstract float getBulletSpread();
 
 	public void setDelay(ItemStack itemstack, int delay) {
 		itemstack.getData().putInt("delayTicks", delay);
@@ -138,14 +145,11 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 		int currAmmo = this.spendAmmo(itemstack);
 		world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.shot." + this.getSoundType(), 1.0f, 1.0f + (float)(Math.random() * 0.5f));
 
-		HitResult ray = player.rayTrace(32.0d, 1.0f, false, true);
-		if(ray != null) {
-			LOGGER.info("I'm not null");
-		}
+		Vec3 eyePos = player.getPosition(1.f, true);
+		Vec3 eyeDir = player.getViewVector(1.f);
 
-		if(ray != null) {
-			LOGGER.info(ray.hitType.name());
-		}
+		ProjectileBullet bullet = new ProjectileBullet(world, player, eyePos, eyeDir, this.getBulletDamage(), this.getBulletVelocity(), this.getBulletSpread());
+		world.entityJoinedWorld(bullet);
 
 		if(currAmmo == 0) {
 			world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.slide_open." + this.getSoundType(), 1.0f, 1.0f);

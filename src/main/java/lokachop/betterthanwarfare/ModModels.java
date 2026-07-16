@@ -1,5 +1,7 @@
 package lokachop.betterthanwarfare;
 
+import lokachop.betterthanwarfare.entities.ProjectileBullet;
+import lokachop.betterthanwarfare.renderer.EntityRendererBullet;
 import net.minecraft.client.render.EntityRenderDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
@@ -46,7 +48,7 @@ public class ModModels implements ModelEntrypoint {
 
 	@Override
 	public void initEntityModels(EntityRenderDispatcher dispatcher) {
-
+		ModelHelper.setEntityModel(ProjectileBullet.class, EntityRendererBullet::new);
 	}
 
 	@Override

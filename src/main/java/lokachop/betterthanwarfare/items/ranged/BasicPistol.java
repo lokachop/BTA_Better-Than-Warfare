@@ -32,5 +32,17 @@ public class BasicPistol extends BaseGun {
 		return "generic";
 	}
 
+	public int getBulletDamage() {
+		return 6;
+	}
 
+	@Override
+	public float getBulletVelocity() {
+		return 3.0f;
+	}
+
+	@Override
+	public float getBulletSpread() {
+		return 0.5f;
+	}
 }

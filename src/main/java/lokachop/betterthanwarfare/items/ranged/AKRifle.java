@@ -31,4 +31,19 @@ public class AKRifle extends BaseGun {
 	public String getSoundType() {
 		return "ak";
 	}
+
+	@Override
+	public int getBulletDamage() {
+		return 4;
+	}
+
+	@Override
+	public float getBulletVelocity() {
+		return 5.0f;
+	}
+
+	@Override
+	public float getBulletSpread() {
+		return 2.0f;
+	}
 }
