@@ -1,14 +1,37 @@
-item.betterthanwarfare.BasicPistol.name=Basic Pistol
-item.betterthanwarfare.BasicPistol.desc=Basic debug pistol, doesn't need ammo.
+item.betterthanwarfare.Pistol.name=Pistol
+item.betterthanwarfare.Pistol.desc=Takes pistol ammo.
 
 item.betterthanwarfare.Receiver.name=Receiver
 item.betterthanwarfare.Receiver.desc=Component used in making guns.
 
-item.betterthanwarfare.BasicAmmo.name=Basic Ammo
-item.betterthanwarfare.BasicAmmo.desc=Basic Ammunition.
+item.betterthanwarfare.PistolAmmo.name=Pistol Ammo
+item.betterthanwarfare.PistolAmmo.desc=Ammunition for the Pistol.
 
-item.betterthanwarfare.AKRifle.name=Basic AK
-item.betterthanwarfare.AKRifle.desc=Basic debug AK rifle, takes AK ammo.
+item.betterthanwarfare.AKRifle.name=AK47
+item.betterthanwarfare.AKRifle.desc=Takes AK47 ammo.
 
-item.betterthanwarfare.AKAmmo.name=AK Ammo
-item.betterthanwarfare.AKAmmo.desc=Ammunition for the AK.
+item.betterthanwarfare.AKAmmo.name=AK47 Ammo
+item.betterthanwarfare.AKAmmo.desc=Ammunition for the AK47.
+
+
+item.betterthanwarfare.IronBalls.name=Iron Balls
+item.betterthanwarfare.IronBalls.desc=Ammunition for primitive weaponry, make sure to have a leather sulfur pouch too!
+
+item.betterthanwarfare.LeatherSulfurPouch.name=Leather Sulfur Pouch
+item.betterthanwarfare.LeatherSulfurPouch.desc=Needed to reload primitive weaponry.
+
+item.betterthanwarfare.FlintlockPistol.name=Flintlock Pistol
+item.betterthanwarfare.FlintlockPistol.desc=A flintlock pistol, shoots iron balls, and requires sulfur from a leather sulfur pouch.
+
+item.betterthanwarfare.BlunderbussRifle.name=Blunderbuss Rifle
+item.betterthanwarfare.BlunderbussRifle.desc=A blunderbuss rifle, shoots iron balls, and requires sulfur from a leather sulfur pouch. WAY more accurate than the flintlock.
+
+item.betterthanwarfare.RevolverPistol.name=Revolver
+item.betterthanwarfare.RevolverPistol.desc=A revolver, shoots revolver ammo.
+
+item.betterthanwarfare.RevolverAmmo.name=Revolver Ammo
+item.betterthanwarfare.RevolverAmmo.desc=Ammunition for the Revolver.
+
+item.betterthanwarfare.KnightSword.name=Roaring Sword
+item.betterthanwarfare.KnightSword.desc=You shouldn't have this.
+

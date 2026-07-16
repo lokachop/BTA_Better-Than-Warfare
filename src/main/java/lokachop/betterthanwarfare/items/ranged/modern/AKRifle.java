@@ -1,48 +1,51 @@
-package lokachop.betterthanwarfare.items.ranged;
+package lokachop.betterthanwarfare.items.ranged.modern;
+
+import lokachop.betterthanwarfare.items.ranged.BaseGun;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
-public class BasicPistol extends BaseGun {
-	public BasicPistol(String translationKey, String namespaceId, int itemId) {
+public class AKRifle extends BaseGun {
+	public AKRifle(String translationKey, String namespaceId, int itemId) {
 		super(translationKey, namespaceId, itemId);
 	}
 
 	@Override
 	public int getClipSize() {
-		return 12;
+		return 30;
 	}
 
 	@Override
 	public int getShootDelay() {
-		return 10; // 20tps, 10t is 0.5s
+		return 2;
 	}
 
 	@Override
 	public int getReloadDelay() {
-		return 20; // 20tps, 40t is 2s
+		return 35;
 	}
 
 	@Override
 	public String getAmmoType() {
-		return MOD_ID + ":BasicAmmo";
+		return MOD_ID + ":AKAmmo";
 	}
 
 	@Override
 	public String getSoundType() {
-		return "generic";
+		return "ak";
 	}
 
+	@Override
 	public int getBulletDamage() {
-		return 6;
+		return 4;
 	}
 
 	@Override
 	public float getBulletVelocity() {
-		return 3.0f;
+		return 5.0f;
 	}
 
 	@Override
 	public float getBulletSpread() {
-		return 0.5f;
+		return 2.0f;
 	}
 }

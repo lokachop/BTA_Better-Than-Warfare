@@ -23,6 +23,7 @@ import static lokachop.betterthanwarfare.BetterThanWarfareMod.LOGGER;
 public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 	public BaseGun(String translationKey, String namespaceId, int id) {
 		super(translationKey, namespaceId, id);
+		this.maxStackSize = 1;
 	}
 
 	@Override
@@ -41,6 +42,14 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 		fontRenderer.drawStringWithShadow("Delay: ", xCalc2, yCalc, 0xFFFFFFFF);
 		fontRenderer.drawStringWithShadow(String.valueOf(currDelay), xCalc2 + fontRenderer.getStringWidth("Delay: "), yCalc, 0xFF8080FF);
 
+		if(currDelay > 0) {
+			int oX = (width / 2) - (currDelay / 2);
+			int oY = (height / 2) + 8;
+			int wCalc = currDelay;
+			int hCalc = 1;
+			guiIngame.drawRect(oX - 1, oY - 1, oX + wCalc + 1, oY + hCalc + 1, 0xFF202080);
+			guiIngame.drawRect(oX, oY, oX + wCalc, oY + hCalc, 0xFF8080FF);
+		}
 	}
 
 	public abstract int getClipSize();
@@ -113,8 +122,6 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 					continue;
 				}
 
-				LOGGER.info(item.getItem().namespaceID.toString());
-
 				int ammoOnThatStack = item.stackSize;
 				int maxCanTake = Math.min(reloadAmount, ammoOnThatStack);
 				totalReloaded += maxCanTake;
@@ -164,7 +171,6 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 		if(this.isDelayed(itemstack)) {
 			return itemstack;
 		}
-		LOGGER.info("Use item");
 
 		if (player.isSneaking()) {
 			return this.doReload(itemstack, world, player);

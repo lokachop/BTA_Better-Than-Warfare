@@ -45,5 +45,35 @@
   "gun.slide_open.ak": {
     "subtitle": "subtitles.betterthanwarfare.gun.slide_open.ak",
     "sounds": []
+  },
+
+  "gun.shot.revolver":{
+    "subtitle": "subtitles.betterthanwarfare.gun.shot.revolver",
+    "sounds": [
+      "revolver/shot.ogg"
+    ]
+  },
+  "gun.dryfire.revolver":{
+    "subtitle": "subtitles.betterthanwarfare.gun.dryfire.revolver",
+    "sounds": [
+      "revolver/dry_fire.ogg"
+    ]
+  },
+  "gun.reload.revolver": {
+    "subtitle": "subtitles.betterthanwarfare.gun.reload.revolver",
+    "sounds": [
+      "revolver/unload.ogg"
+    ]
+  },
+  "gun.slide_open.revolver": {
+    "subtitle": "subtitles.betterthanwarfare.gun.slide_open.revolver",
+    "sounds": []
+  },
+  "melee.knightsword": {
+    "subtitle": "subtitles.betterthanwarfare.melee.knightsword",
+    "sounds": [
+      "admin/sword/snd_knight_cut.ogg",
+      "admin/sword/snd_knight_cut2.ogg"
+    ]
   }
 }

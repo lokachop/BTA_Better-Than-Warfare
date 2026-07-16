@@ -35,7 +35,17 @@ public class ModModels implements ModelEntrypoint {
 			});
 		});
 
-		ModItems.weaponTextures.forEach((item, texture) -> {
+		ModItems.gunTextures.forEach((item, texture) -> {
+			ModelHelper.setItemModel(item, () -> {
+				ItemModelStandard model = new ItemModelStandard(item, BetterThanWarfareMod.MOD_ID);
+				model.setFull3D();
+
+				model.icon = TextureRegistry.getTexture(NamespaceID.getTemp(BetterThanWarfareMod.MOD_ID, "item/" + texture));
+				return model;
+			});
+		});
+
+		ModItems.meleeTextures.forEach((item, texture) -> {
 			ModelHelper.setItemModel(item, () -> {
 				ItemModelStandard model = new ItemModelStandard(item, BetterThanWarfareMod.MOD_ID);
 				model.setFull3D();
