@@ -47,6 +47,52 @@
     "sounds": []
   },
 
+  "gun.shot.flintlock":{
+    "subtitle": "subtitles.betterthanwarfare.gun.shot.flintlock",
+    "sounds": [
+      "flintlock/shot.ogg"
+    ]
+  },
+  "gun.dryfire.flintlock":{
+    "subtitle": "subtitles.betterthanwarfare.gun.dryfire.flintlock",
+    "sounds": [
+      "flintlock/dry_fire.ogg"
+    ]
+  },
+  "gun.reload.flintlock": {
+    "subtitle": "subtitles.betterthanwarfare.gun.reload.flintlock",
+    "sounds": [
+      "flintlock/reload.ogg"
+    ]
+  },
+  "gun.slide_open.flintlock": {
+    "subtitle": "subtitles.betterthanwarfare.gun.slide_open.flintlock",
+    "sounds": []
+  },
+
+  "gun.shot.blunderbuss":{
+    "subtitle": "subtitles.betterthanwarfare.gun.shot.blunderbuss",
+    "sounds": [
+      "blunderbuss/shot.ogg"
+    ]
+  },
+  "gun.dryfire.blunderbuss":{
+    "subtitle": "subtitles.betterthanwarfare.gun.dryfire.blunderbuss",
+    "sounds": [
+      "blunderbuss/dry_fire.ogg"
+    ]
+  },
+  "gun.reload.blunderbuss": {
+    "subtitle": "subtitles.betterthanwarfare.gun.reload.blunderbuss",
+    "sounds": [
+      "blunderbuss/reload.ogg"
+    ]
+  },
+  "gun.slide_open.blunderbuss": {
+    "subtitle": "subtitles.betterthanwarfare.gun.slide_open.blunderbuss",
+    "sounds": []
+  },
+
   "gun.shot.revolver":{
     "subtitle": "subtitles.betterthanwarfare.gun.shot.revolver",
     "sounds": [

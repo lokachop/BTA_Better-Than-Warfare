@@ -75,7 +75,7 @@ public class ModItems {
 
 		IronBallsItem = basicItem("IronBalls", "ammo/primitive/iron_balls");
 		LeatherSulfurPouchItem = advancedItem(new LeatherSulfurPouch("LeatherSulfurPouch", namespaceConvert("LeatherSulfurPouch"), newItemID()), "ammo/primitive/leather_pouch");
-		FlintlockPistolItem = basicGun(new FlintlockPistol("FlintlockPistol", namespaceConvert("FlintlockPistol"), newItemID()), "gun/primitive/rayne_flintlock");
+		FlintlockPistolItem = basicGun(new FlintlockPistol("FlintlockPistol", namespaceConvert("FlintlockPistol"), newItemID()), "gun/primitive/flintlock");
 		BlunderbussRifleItem = basicGun(new BlunderbussRifle("BlunderbussRifle", namespaceConvert("BlunderbussRifle"), newItemID()), "gun/primitive/blunderbuss");
 
 		RevolverAmmoItem = basicItem("RevolverAmmo", "ammo/primitive/revolver_ammo");

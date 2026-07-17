@@ -1,6 +1,8 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
@@ -47,5 +49,17 @@ public class BlunderbussRifle extends BaseGun {
 	@Override
 	public float getBulletSpread() {
 		return 0.4f;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilPitch() {
+		return -30;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilYaw() {
+		return (float) (Math.random() * 10) - 5;
 	}
 }

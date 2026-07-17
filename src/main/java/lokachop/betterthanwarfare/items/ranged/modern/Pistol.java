@@ -1,6 +1,8 @@
 package lokachop.betterthanwarfare.items.ranged.modern;
 
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
@@ -46,5 +48,17 @@ public class Pistol extends BaseGun {
 	@Override
 	public float getBulletSpread() {
 		return 0.5f;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilPitch() {
+		return -6;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilYaw() {
+		return (float) (Math.random() * 2) - 1;
 	}
 }

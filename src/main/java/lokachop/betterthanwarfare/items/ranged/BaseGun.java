@@ -2,21 +2,21 @@ package lokachop.betterthanwarfare.items.ranged;
 
 import lokachop.betterthanwarfare.entities.ProjectileBullet;
 import lokachop.betterthanwarfare.interfaces.IGunDetailsOverlay;
-import lokachop.betterthanwarfare.util.RaycastUtil;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.hud.HudIngame;
 import net.minecraft.client.render.Font;
 import net.minecraft.client.render.entity.EntityRendererItem;
 import net.minecraft.core.entity.Entity;
-import net.minecraft.core.entity.Mob;
+import net.minecraft.core.entity.monster.MobCreeper;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
-import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.util.phys.Vec3;
 import net.minecraft.core.world.World;
-
-import java.util.Arrays;
+import turniplabs.halplibe.helper.EnvironmentHelper;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.LOGGER;
 
@@ -61,6 +61,11 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 	public abstract float getBulletVelocity();
 	public abstract float getBulletSpread();
 
+	@Environment(EnvType.CLIENT)
+	public abstract float calcRecoilPitch();
+	@Environment(EnvType.CLIENT)
+	public abstract float calcRecoilYaw();
+
 	public void setDelay(ItemStack itemstack, int delay) {
 		itemstack.getData().putInt("delayTicks", delay);
 	}
@@ -88,7 +93,7 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 		itemstack.getData().putInt("currClip", clip);
 	}
 
-	private ItemStack doReload(ItemStack itemstack, World world, Player player) {
+	protected ItemStack doReload(ItemStack itemstack, World world, Player player) {
 		// check if we're full
 		if(itemstack.getData().getInteger("currClip") == this.getClipSize()) {
 			return itemstack;
@@ -102,7 +107,7 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 			this.setDelay(itemstack, this.getReloadDelay());
 
 			this.setCurrentClip(itemstack, this.getClipSize());
-			world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.reload." + this.getSoundType(), 1.0f, 1.0f);
+			world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.reload." + this.getSoundType(), 1.0f, 1.0f);
 			return itemstack;
 		}
 
@@ -136,30 +141,38 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 
 		this.setDelay(itemstack, this.getReloadDelay());
 		this.setCurrentClip(itemstack, currClip + totalReloaded);
-		world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.reload." + this.getSoundType(), 1.0f, 1.0f);
+		world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.reload." + this.getSoundType(), 1.0f, 1.0f);
 
 		return itemstack;
 	}
 
-	private ItemStack doShoot(ItemStack itemstack, World world, Player player) {
+	protected ItemStack doShoot(ItemStack itemstack, World world, Player player) {
 		if(!this.canShoot(itemstack)) {
-			world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.dryfire." + this.getSoundType(), 1.0f, 1.0f);
+			world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.dryfire." + this.getSoundType(), 1.0f, 1.0f);
 			return itemstack;
 		}
 
 		this.setDelay(itemstack, this.getShootDelay());
 
 		int currAmmo = this.spendAmmo(itemstack);
-		world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.shot." + this.getSoundType(), 1.0f, 1.0f + (float)(Math.random() * 0.5f));
+		world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.shot." + this.getSoundType(), 1.0f, 1.0f + (float)((Math.random() - 0.5f) * 0.5f));
 
-		Vec3 eyePos = player.getPosition(1.f, true);
-		Vec3 eyeDir = player.getViewVector(1.f);
+		Vec3 eyePos = player.getPosition(1.0f, true);
+		Vec3 eyeDir = player.getViewVector(1.0f);
 
-		ProjectileBullet bullet = new ProjectileBullet(world, player, eyePos, eyeDir, this.getBulletDamage(), this.getBulletVelocity(), this.getBulletSpread());
-		world.entityJoinedWorld(bullet);
+		if(!EnvironmentHelper.isClientWorld()) { // TODO: net message to make this sync to client
+			ProjectileBullet bullet = new ProjectileBullet(world, player, eyePos, eyeDir, this.getBulletDamage(), this.getBulletVelocity(), this.getBulletSpread());
+			world.entityJoinedWorld(bullet);
+			world.spawnParticle("largesmoke", eyePos.x + eyeDir.x * 2, eyePos.y + eyeDir.y * 2, eyePos.z + eyeDir.z * 2, 0, 0, 0, 0);
+		}
+
+		if(!EnvironmentHelper.isServerEnvironment()) {
+			Minecraft.getMinecraft().thePlayer.xRot += this.calcRecoilPitch();
+			Minecraft.getMinecraft().thePlayer.yRot += this.calcRecoilYaw();
+		}
 
 		if(currAmmo == 0) {
-			world.playSoundAtEntity(null, player,  "betterthanwarfare:gun.slide_open." + this.getSoundType(), 1.0f, 1.0f);
+			world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.slide_open." + this.getSoundType(), 1.0f, 1.0f);
 		}
 
 		return itemstack;

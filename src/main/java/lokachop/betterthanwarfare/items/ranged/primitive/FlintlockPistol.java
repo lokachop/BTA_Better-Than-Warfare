@@ -1,6 +1,8 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
@@ -47,5 +49,17 @@ public class FlintlockPistol extends BaseGun {
 	@Override
 	public float getBulletSpread() {
 		return 1.0f;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilPitch() {
+		return 0;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilYaw() {
+		return 0;
 	}
 }

@@ -15,7 +15,7 @@ public class KnightSword extends ItemToolSword {
 	@Override
 	public boolean hitEntity(ItemStack itemstack, Mob target, Mob attacker) {
 		assert target.world != null;
-		target.world.playSoundAtEntity(null, attacker,  "betterthanwarfare:melee.knightsword", 1.0f, 1.0f);
+		target.world.playSoundAtEntity(attacker, target,  "betterthanwarfare:melee.knightsword", 1.0f, 1.0f);
 
 		return true;
 	}
