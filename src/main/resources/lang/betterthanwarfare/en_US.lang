@@ -13,6 +13,12 @@ item.betterthanwarfare.AKRifle.desc=Takes AK47 ammo.
 item.betterthanwarfare.AKAmmo.name=AK47 Ammo
 item.betterthanwarfare.AKAmmo.desc=Ammunition for the AK47.
 
+item.betterthanwarfare.FlightMinigun.name=Minigun
+item.betterthanwarfare.FlightMinigun.desc=Takes Minigun ammo drums. This probably works better as a jetpack rather than a gun.
+
+item.betterthanwarfare.MinigunAmmo.name=Minigun Ammo Drum
+item.betterthanwarfare.MinigunAmmo.desc=Ammunition for the Minigun. Stores 400 rounds.
+
 
 item.betterthanwarfare.IronBalls.name=Iron Balls
 item.betterthanwarfare.IronBalls.desc=Ammunition for primitive weaponry, make sure to have a leather sulfur pouch too!
@@ -35,3 +41,46 @@ item.betterthanwarfare.RevolverAmmo.desc=Ammunition for the Revolver.
 item.betterthanwarfare.KnightSword.name=Roaring Sword
 item.betterthanwarfare.KnightSword.desc=You shouldn't have this.
 
+
+# crafting components, tools
+item.betterthanwarfare.CraftingHammer.name=Iron Hammer
+item.betterthanwarfare.CraftingHammer.desc=Used to flatten things, for weaponry.
+
+item.betterthanwarfare.CraftingSaw.name=Iron Saw
+item.betterthanwarfare.CraftingSaw.desc=Used to cut things, for weaponry.
+
+item.betterthanwarfare.CraftingSawDiamond.name=Diamond Saw
+item.betterthanwarfare.CraftingSawDiamond.desc=Used to cut things, for weaponry. More durable and harder than the iron one.
+
+# crafting components, misc
+item.betterthanwarfare.PlateIron.name=Iron Plate
+item.betterthanwarfare.PlateIron.desc=Used in various recipes, for weaponry.
+
+item.betterthanwarfare.PlateSteel.name=Steel Plate
+item.betterthanwarfare.PlateSteel.desc=Used in various recipes, for weaponry.
+
+item.betterthanwarfare.PlateGold.name=Gold Plate
+item.betterthanwarfare.PlateGold.desc=Used in various recipes, for weaponry.
+
+item.betterthanwarfare.CylinderSteel.name=Steel Cylinder
+item.betterthanwarfare.CylinderSteel.desc=Used in various recipes, for weaponry.
+
+item.betterthanwarfare.DustTinySulphur.name=Tiny Sulphur Pile
+item.betterthanwarfare.DustTinySulphur.desc=Used in various recipes for weaponry.
+
+# crafting components, revolver
+item.betterthanwarfare.RevolverCraftingBarrel.name=Revolver Barrel
+item.betterthanwarfare.RevolverCraftingBarrel.desc=Barrel for the revolver.
+
+item.betterthanwarfare.RevolverCraftingCylinder.name=Revolver Drum
+item.betterthanwarfare.RevolverCraftingCylinder.desc=Drum for the revolver.
+
+item.betterthanwarfare.RevolverCraftingGrip.name=Revolver Grip
+item.betterthanwarfare.RevolverCraftingGrip.desc=Grip for the revolver.
+
+# crafting components, revolver, ammo
+item.betterthanwarfare.RevolverCraftingBullet.name=Steel Bullet
+item.betterthanwarfare.RevolverCraftingBullet.desc=A steel bullet, used to make ammo.
+
+item.betterthanwarfare.RevolverCraftingCasing.name=Gold Casing
+item.betterthanwarfare.RevolverCraftingCasing.desc=A gold casing, used to make ammo.

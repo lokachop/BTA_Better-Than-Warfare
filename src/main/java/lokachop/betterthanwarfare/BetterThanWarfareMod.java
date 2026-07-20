@@ -1,6 +1,7 @@
 package lokachop.betterthanwarfare;
 
 import lokachop.betterthanwarfare.entities.netentries.NetEntryProjectileBullet;
+import lokachop.betterthanwarfare.recipe.ModRecipes;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.sound.SoundRepository;
 import net.minecraft.core.net.entity.NetEntityHandler;
@@ -20,10 +21,14 @@ public class BetterThanWarfareMod implements ModInitializer, RecipeEntrypoint, G
 	}
 
 	@Override
-	public void onRecipesReady() {}
+	public void onRecipesReady() {
+		ModRecipes.InitRecipes();
+	}
 
 	@Override
-	public void initNamespaces() {}
+	public void initNamespaces() {
+		ModRecipes.InitNamespaces();
+	}
 
 	@Override
 	public void beforeGameStart() {

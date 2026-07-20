@@ -2,6 +2,7 @@ package lokachop.betterthanwarfare.items.ranged;
 
 import lokachop.betterthanwarfare.entities.ProjectileBullet;
 import lokachop.betterthanwarfare.interfaces.IGunDetailsOverlay;
+import lokachop.betterthanwarfare.interfaces.INoCooldownItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -20,7 +21,7 @@ import turniplabs.halplibe.helper.EnvironmentHelper;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.LOGGER;
 
-public abstract class BaseGun extends Item implements IGunDetailsOverlay {
+public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCooldownItem {
 	public BaseGun(String translationKey, String namespaceId, int id) {
 		super(translationKey, namespaceId, id);
 		this.maxStackSize = 1;
@@ -93,6 +94,11 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 		itemstack.getData().putInt("currClip", clip);
 	}
 
+	public void onShoot(ItemStack itemstack, World world, Player player) {
+
+	}
+
+
 	protected ItemStack doReload(ItemStack itemstack, World world, Player player) {
 		// check if we're full
 		if(itemstack.getData().getInteger("currClip") == this.getClipSize()) {
@@ -148,9 +154,17 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 
 	protected ItemStack doShoot(ItemStack itemstack, World world, Player player) {
 		if(!this.canShoot(itemstack)) {
+			this.setDelay(itemstack, 4);
 			world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.dryfire." + this.getSoundType(), 1.0f, 1.0f);
 			return itemstack;
 		}
+
+		if(!EnvironmentHelper.isServerEnvironment()) {
+			//Minecraft.getMinecraft().playerController.useItemStackOnNothing();
+			//Minecraft.getMinecraft().mouseTicksRan = 0;
+		}
+		player.swingProgressInt = 0;
+		player.isSwinging = false;
 
 		this.setDelay(itemstack, this.getShootDelay());
 
@@ -166,18 +180,15 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay {
 			world.spawnParticle("largesmoke", eyePos.x + eyeDir.x * 2, eyePos.y + eyeDir.y * 2, eyePos.z + eyeDir.z * 2, 0, 0, 0, 0);
 		}
 
+		this.onShoot(itemstack, world, player);
+
 		if(!EnvironmentHelper.isServerEnvironment()) {
 			Minecraft.getMinecraft().thePlayer.xRot += this.calcRecoilPitch();
 			Minecraft.getMinecraft().thePlayer.yRot += this.calcRecoilYaw();
 		}
 
-		if(currAmmo == 0) {
-			world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.slide_open." + this.getSoundType(), 1.0f, 1.0f);
-		}
-
 		return itemstack;
 	}
-
 
 	@Override
 	public ItemStack onUseItem(ItemStack itemstack, World world, Player player) {

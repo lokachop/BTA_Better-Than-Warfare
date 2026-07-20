@@ -1,6 +1,6 @@
-package lokachop.betterthanwarfare.items.ranged.primitive;
+package lokachop.betterthanwarfare.items.ranged.modern;
 
-import lokachop.betterthanwarfare.items.ranged.BaseGun;
+import lokachop.betterthanwarfare.items.ranged.MagGun;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.core.entity.player.Player;
@@ -10,72 +10,71 @@ import net.minecraft.core.world.World;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
-public class BlunderbussRifle extends BaseGun {
-	public BlunderbussRifle(String translationKey, String namespaceId, int itemId) {
-		super(translationKey, namespaceId, itemId);
+public class FlightMinigun extends MagGun {
+	public FlightMinigun(String translationKey, String namespaceId, int id) {
+		super(translationKey, namespaceId, id);
 	}
 
 	@Override
 	public int getClipSize() {
-		return 1;
+		return 400;
 	}
 
 	@Override
 	public int getShootDelay() {
-		return 40;
+		return 0;
 	}
 
 	@Override
 	public int getReloadDelay() {
-		return 80;
+		return 120;
 	}
 
 	@Override
 	public String getAmmoType() {
-		return MOD_ID + ":IronBalls";
+		return MOD_ID + ":MinigunAmmo";
 	}
 
 	@Override
 	public String getSoundType() {
-		return "blunderbuss";
+		return "minigun";
 	}
 
 	@Override
 	public int getBulletDamage() {
-		return 20;
+		return 2;
 	}
 
 	@Override
 	public float getBulletVelocity() {
-		return 4.5f;
+		return 5.0f;
 	}
 
 	@Override
 	public float getBulletSpread() {
-		return 0.4f;
+		return 8.0f;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilPitch() {
+		return 0;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float calcRecoilYaw() {
+		return 0;
 	}
 
 	@Override
 	public void onShoot(ItemStack itemstack, World world, Player player) {
 		Vec3 eyeDir = player.getLookAngle();
 
-		double speedMul = 0.5d;
+		double speedMul = 0.1d;
 
 		player.xd -= eyeDir.x * speedMul;
 		player.yd -= eyeDir.y * speedMul;
 		player.zd -= eyeDir.z * speedMul;
-	}
-
-
-	@Override
-	@Environment(EnvType.CLIENT)
-	public float calcRecoilPitch() {
-		return -30;
-	}
-
-	@Override
-	@Environment(EnvType.CLIENT)
-	public float calcRecoilYaw() {
-		return (float) (Math.random() * 10) - 5;
 	}
 }
