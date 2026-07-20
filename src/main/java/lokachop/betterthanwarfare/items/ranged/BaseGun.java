@@ -159,13 +159,6 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 			return itemstack;
 		}
 
-		if(!EnvironmentHelper.isServerEnvironment()) {
-			//Minecraft.getMinecraft().playerController.useItemStackOnNothing();
-			//Minecraft.getMinecraft().mouseTicksRan = 0;
-		}
-		player.swingProgressInt = 0;
-		player.isSwinging = false;
-
 		this.setDelay(itemstack, this.getShootDelay());
 
 		int currAmmo = this.spendAmmo(itemstack);
