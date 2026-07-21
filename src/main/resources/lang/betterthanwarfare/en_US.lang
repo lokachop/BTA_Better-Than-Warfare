@@ -14,10 +14,10 @@ item.betterthanwarfare.AKAmmo.name=AK47 Ammo
 item.betterthanwarfare.AKAmmo.desc=Ammunition for the AK47.
 
 item.betterthanwarfare.FlightMinigun.name=Minigun
-item.betterthanwarfare.FlightMinigun.desc=Takes Minigun ammo drums. This probably works better as a jetpack rather than a gun.
+item.betterthanwarfare.FlightMinigun.desc=Takes Minigun ammo drums. This probably works better as a jetpack rather than as a gun.
 
 item.betterthanwarfare.MinigunAmmo.name=Minigun Ammo Drum
-item.betterthanwarfare.MinigunAmmo.desc=Ammunition for the Minigun. Stores 400 rounds.
+item.betterthanwarfare.MinigunAmmo.desc=Ammunition for the Minigun. Stores 1600 rounds.
 
 
 item.betterthanwarfare.IronBalls.name=Iron Balls

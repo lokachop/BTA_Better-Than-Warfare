@@ -167,7 +167,7 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 		Vec3 eyePos = player.getPosition(1.0f, true);
 		Vec3 eyeDir = player.getViewVector(1.0f);
 
-		if(!EnvironmentHelper.isClientWorld()) { // TODO: net message to make this sync to client
+		if(!EnvironmentHelper.isClientWorld()) {
 			ProjectileBullet bullet = new ProjectileBullet(world, player, eyePos, eyeDir, this.getBulletDamage(), this.getBulletVelocity(), this.getBulletSpread());
 			world.entityJoinedWorld(bullet);
 			world.spawnParticle("largesmoke", eyePos.x + eyeDir.x * 2, eyePos.y + eyeDir.y * 2, eyePos.z + eyeDir.z * 2, 0, 0, 0, 0);

@@ -6,6 +6,6 @@ public class MinigunAmmo extends Item {
 	public MinigunAmmo(String translationKey, String namespaceId, int id) {
 		super(translationKey, namespaceId, id);
 		this.maxStackSize = 1;
-		this.setMaxDamage(400); // 400 uses per minigun ammo
+		this.setMaxDamage(1600); // 1600 uses per minigun ammo
 	}
 }

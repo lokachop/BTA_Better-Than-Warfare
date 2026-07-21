@@ -17,7 +17,7 @@ public class FlightMinigun extends MagGun {
 
 	@Override
 	public int getClipSize() {
-		return 400;
+		return 1600;
 	}
 
 	@Override

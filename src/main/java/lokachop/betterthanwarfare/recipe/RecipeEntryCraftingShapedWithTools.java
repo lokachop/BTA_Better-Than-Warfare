@@ -52,7 +52,13 @@ public class RecipeEntryCraftingShapedWithTools extends RecipeEntryCraftingShape
 						return false;
 					}
 
-					RecipeSymbolMetaless metaless = new RecipeSymbolMetaless(symbol.getSymbol(), symbol.getStack()); // this is awful but it's 03:38, and i want to make it work
+					RecipeSymbolMetaless metaless;
+					if(symbol.getItemGroup() != null) { // this is awful but it's 03:38, and i want to make it work
+						metaless = new RecipeSymbolMetaless(symbol.getSymbol(), symbol.getStack(), symbol.getItemGroup());
+					} else {
+						metaless = new RecipeSymbolMetaless(symbol.getSymbol(), symbol.getStack());
+					}
+
 					if (!metaless.matchesIgnoreMeta(itemstack1)) {
 						return false;
 					}
