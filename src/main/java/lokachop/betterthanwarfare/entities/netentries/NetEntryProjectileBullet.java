@@ -22,7 +22,8 @@ public class NetEntryProjectileBullet implements IVehicleEntry<ProjectileBullet>
 		return 64;
 	}
 
-	public int getPacketDelay() {
+	@Override
+	public int getMovementPacketDelay() {
 		return 10;
 	}
 

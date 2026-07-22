@@ -5,6 +5,7 @@ import net.minecraft.core.entity.Mob;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.material.ToolMaterial;
 import net.minecraft.core.item.tool.ItemToolSword;
+import org.jetbrains.annotations.NotNull;
 
 public class KnightSword extends ItemToolSword {
 	public KnightSword(String name, String namespaceId, int id) {
@@ -13,15 +14,14 @@ public class KnightSword extends ItemToolSword {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack itemstack, Mob target, Mob attacker) {
-		assert target.world != null;
+	public boolean hitEntity(@NotNull ItemStack itemstack, Mob target, @NotNull Mob attacker) {
 		target.world.playSoundAtEntity(attacker, target,  "betterthanwarfare:melee.knightsword", 1.0f, 1.0f);
 
 		return true;
 	}
 
 	@Override
-	public int getDamageVsEntity(Entity entity, ItemStack is) {
+	public int getDamageVsEntity(@NotNull ItemStack is, @NotNull Entity entity) {
 		return 999;
 	}
 }

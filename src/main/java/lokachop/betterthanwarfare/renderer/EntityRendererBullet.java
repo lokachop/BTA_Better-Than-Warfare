@@ -3,6 +3,8 @@ package lokachop.betterthanwarfare.renderer;
 import lokachop.betterthanwarfare.entities.ProjectileBullet;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.tessellator.Tessellator;
+import net.minecraft.client.render.tessellator.TessellatorGeneral;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.LOGGER;
@@ -11,8 +13,9 @@ public class EntityRendererBullet extends EntityRenderer<ProjectileBullet> {
 	public EntityRendererBullet() {}
 
 	@Override
-	public void render(Tessellator tessellator, ProjectileBullet bullet, double x, double y, double z, float yaw, float partialTick) {
+	public void render(@NotNull TessellatorGeneral tessellator, @NotNull ProjectileBullet bullet, double x, double y, double z, float yaw, float partialTick) {
 		this.bindTexture("/assets/betterthanwarfare/textures/entity/bullets.png");
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x, (float)y, (float)z);
 		GL11.glRotatef(bullet.yRotO + (bullet.yRot - bullet.yRotO) * partialTick - 90.0F, 0.0F, 1.0F, 0.0F);

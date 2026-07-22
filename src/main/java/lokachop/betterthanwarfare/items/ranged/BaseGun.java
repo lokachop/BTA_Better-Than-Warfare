@@ -6,20 +6,19 @@ import lokachop.betterthanwarfare.interfaces.INoCooldownItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.hud.HudIngame;
-import net.minecraft.client.render.Font;
 import net.minecraft.client.render.entity.EntityRendererItem;
+import net.minecraft.client.render.font.FontRenderer;
 import net.minecraft.core.entity.Entity;
-import net.minecraft.core.entity.monster.MobCreeper;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
-import net.minecraft.core.util.phys.Vec3;
 import net.minecraft.core.world.World;
+import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3dc;
 import turniplabs.halplibe.helper.EnvironmentHelper;
-
-import static lokachop.betterthanwarfare.BetterThanWarfareMod.LOGGER;
 
 public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCooldownItem {
 	public BaseGun(String translationKey, String namespaceId, int id) {
@@ -28,20 +27,20 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 	}
 
 	@Override
-	public void renderOverlay(HudIngame guiIngame, Player player, int height, int width, int mouseX, int mouseY, Font fontRenderer, EntityRendererItem itemRenderer) {
+	public void renderOverlay(HudIngame guiIngame, Player player, int height, int width, int mouseX, int mouseY, Gui gui, FontRenderer fontRenderer, EntityRendererItem itemRenderer) {
 		ContainerInventory inv = player.inventory;
 		ItemStack gun = inv.getCurrentItem();
 		int yCalc = height - 42;
 
 		int xCalc = (width / 2) - 64 - 24;
 		int currClip = gun.getData().getInteger("currClip");
-		fontRenderer.drawStringWithShadow("Clip: ", xCalc, yCalc, 0xFFFFFFFF);
-		fontRenderer.drawStringWithShadow(String.valueOf(currClip), xCalc + fontRenderer.getStringWidth("Clip: "), yCalc, currClip <= 0 ? 0xFFFF8080 : 0xFF80FF80);
+		gui.drawStringShadow(fontRenderer, "Clip: ", xCalc, yCalc, 0xFFFFFFFF);
+		gui.drawStringShadow(fontRenderer, String.valueOf(currClip), xCalc + fontRenderer.stringWidth("Clip: "), yCalc, currClip <= 0 ? 0xFFFF8080 : 0xFF80FF80);
 
 		int xCalc2 = (width / 2) + 64;
 		int currDelay = gun.getData().getInteger("delayTicks");
-		fontRenderer.drawStringWithShadow("Delay: ", xCalc2, yCalc, 0xFFFFFFFF);
-		fontRenderer.drawStringWithShadow(String.valueOf(currDelay), xCalc2 + fontRenderer.getStringWidth("Delay: "), yCalc, 0xFF8080FF);
+		gui.drawStringShadow(fontRenderer, "Delay: ", xCalc2, yCalc, 0xFFFFFFFF);
+		gui.drawStringShadow(fontRenderer, String.valueOf(currDelay), xCalc2 + fontRenderer.stringWidth("Delay: "), yCalc, 0xFF8080FF);
 
 		if(currDelay > 0) {
 			int oX = (width / 2) - (currDelay / 2);
@@ -164,18 +163,19 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 		int currAmmo = this.spendAmmo(itemstack);
 		world.playSoundAtEntity(player, player,  "betterthanwarfare:gun.shot." + this.getSoundType(), 1.0f, 1.0f + (float)((Math.random() - 0.5f) * 0.5f));
 
-		Vec3 eyePos = player.getPosition(1.0f, true);
-		Vec3 eyeDir = player.getViewVector(1.0f);
+		Vector3dc eyePos = player.getPosition(1.0f, true);
+		Vector3dc eyeDir = player.getViewVector(1.0f);
 
-		if(!EnvironmentHelper.isClientWorld()) {
+		if(!EnvironmentHelper.isMultiplayerClient()) {
+			assert eyeDir != null;
 			ProjectileBullet bullet = new ProjectileBullet(world, player, eyePos, eyeDir, this.getBulletDamage(), this.getBulletVelocity(), this.getBulletSpread());
 			world.entityJoinedWorld(bullet);
-			world.spawnParticle("largesmoke", eyePos.x + eyeDir.x * 2, eyePos.y + eyeDir.y * 2, eyePos.z + eyeDir.z * 2, 0, 0, 0, 0);
+			world.spawnParticle("largesmoke", eyePos.x() + eyeDir.x() * 2, eyePos.y() + eyeDir.y() * 2, eyePos.z() + eyeDir.z() * 2, 0, 0, 0, 0, true);
 		}
 
 		this.onShoot(itemstack, world, player);
 
-		if(!EnvironmentHelper.isServerEnvironment()) {
+		if(!EnvironmentHelper.isMultiplayerServer()) {
 			Minecraft.getMinecraft().thePlayer.xRot += this.calcRecoilPitch();
 			Minecraft.getMinecraft().thePlayer.yRot += this.calcRecoilYaw();
 		}
@@ -184,7 +184,7 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 	}
 
 	@Override
-	public ItemStack onUseItem(ItemStack itemstack, World world, Player player) {
+	public ItemStack onUse(@NotNull ItemStack itemstack, @NotNull World world, @NotNull Player player) {
 		if(this.isDelayed(itemstack)) {
 			return itemstack;
 		}
@@ -197,7 +197,7 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 	}
 
 	@Override
-	public void	inventoryTick(ItemStack itemstack, World world, Entity entity, int slotId, boolean flag) {
+	public void	inventoryTick(ItemStack itemstack, @NotNull World world, @NotNull Entity entity, int slotId, boolean flag) {
 		int delayTicks = itemstack.getData().getInteger("delayTicks");
 		if(delayTicks > 0) {
 			itemstack.getData().putInt("delayTicks", --delayTicks);

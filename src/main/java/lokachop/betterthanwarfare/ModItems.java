@@ -14,9 +14,12 @@ import lokachop.betterthanwarfare.items.ranged.primitive.FlintlockPistol;
 import lokachop.betterthanwarfare.items.ranged.primitive.RevolverPistol;
 import net.minecraft.core.item.Item;
 import turniplabs.halplibe.helper.ItemBuilder;
+import turniplabs.halplibe.helper.creativeInventory.CreativeInventoryCategory;
+import turniplabs.halplibe.helper.creativeInventory.CreativeInventoryPlacement;
 
 import java.util.HashMap;
 
+import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 public class ModItems {
 	public static HashMap<Item, String> itemTextures = new HashMap<>(); // stealing the homework...
 	public static HashMap<Item, String> gunTextures = new HashMap<>();
@@ -28,10 +31,10 @@ public class ModItems {
 	}
 
 	private static String namespaceConvert(String name) {
-		return BetterThanWarfareMod.MOD_ID + ":" + name;
+		return MOD_ID + ":" + name;
 	}
 
-	private static final ItemBuilder genericItemBuilder = new ItemBuilder(BetterThanWarfareMod.MOD_ID);
+	private static final ItemBuilder genericItemBuilder = new ItemBuilder(MOD_ID).setCreativeInventoryPlacement(new CreativeInventoryPlacement.Category(CreativeInventoryCategory.MISCELLANEOUS));
 	private static Item basicItem(String name, String texture) {
 		Item item = new Item(name, BetterThanWarfareMod.MOD_ID + ":" + name, newItemID());
 
@@ -52,6 +55,8 @@ public class ModItems {
 		meleeTextures.put(item, texture);
 		return genericItemBuilder.build(item);
 	}
+
+	public static Item BulletIconItem;
 
 	public static Item DustTinySulphurItem;
 	public static Item PlateSteelItem;
@@ -91,6 +96,8 @@ public class ModItems {
 	public static Item MinigunMachinegunItem;
 	public static void RegisterItems() {
 		BetterThanWarfareMod.LOGGER.info("Registering items...");
+
+		BulletIconItem = basicItem("BulletIcon", "misc/bullet");
 
 		DustTinySulphurItem = basicItem("DustTinySulphur", "crafting_component/general/tiny_sulphur");
 		PlateSteelItem = basicItem("PlateSteel", "crafting_component/general/steel_plate");

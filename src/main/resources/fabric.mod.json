@@ -18,17 +18,8 @@
 		"main": [
 			"lokachop.betterthanwarfare.BetterThanWarfareMod"
 		],
-		"beforeGameStart": [
-			"lokachop.betterthanwarfare.BetterThanWarfareMod"
-		],
-		"afterGameStart": [
-			"lokachop.betterthanwarfare.BetterThanWarfareMod"
-		],
-		"initModels": [
-			"lokachop.betterthanwarfare.ModModels"
-		],
-		"recipesReady": [
-			"lokachop.betterthanwarfare.BetterThanWarfareMod"
+		"client": [
+			"lokachop.betterthanwarfare.BetterThanWarfareClient"
 		]
 	},
 	"mixins": [

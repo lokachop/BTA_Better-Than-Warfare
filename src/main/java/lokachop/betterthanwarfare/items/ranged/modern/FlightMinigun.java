@@ -7,6 +7,7 @@ import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.phys.Vec3;
 import net.minecraft.core.world.World;
+import org.joml.Vector3dc;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
@@ -69,12 +70,13 @@ public class FlightMinigun extends MagGun {
 
 	@Override
 	public void onShoot(ItemStack itemstack, World world, Player player) {
-		Vec3 eyeDir = player.getLookAngle();
+		Vector3dc eyeDir = player.getViewVector(1.0f);
 
 		double speedMul = 0.1d;
 
-		player.xd -= eyeDir.x * speedMul;
-		player.yd -= eyeDir.y * speedMul;
-		player.zd -= eyeDir.z * speedMul;
+		assert eyeDir != null;
+		player.xd -= eyeDir.x() * speedMul;
+		player.yd -= eyeDir.y() * speedMul;
+		player.zd -= eyeDir.z() * speedMul;
 	}
 }
