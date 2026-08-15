@@ -220,6 +220,19 @@ public class ModRecipes extends RecipeRegistry {
 			.addInput('G', ModItems.DustTinySulphurItem)
 			.addInput('C', ModItems.RevolverCraftingCasingItem)
 			.create("RevolverAmmoRecipe", revolverAmmo);
+
+		ItemStack ironBalls = ModItems.IronBallsItem.getDefaultStack();
+		ironBalls.stackSize = 6;
+		new RecipeBuilderShapedWithTools(MOD_ID)
+			.setShape(
+				"SPH",
+				"PIP",
+				" P ")
+			.addInput('S', MOD_ID + ":crafting_saws")
+			.addInput('H', MOD_ID + ":crafting_hammers")
+			.addInput('P', ModItems.PlateIronItem)
+			.addInput('I', Items.INGOT_IRON)
+			.create("IronBallsRecipe", ironBalls);
 	}
 
 	private static void registerLists() {
