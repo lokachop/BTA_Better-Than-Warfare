@@ -24,26 +24,25 @@ item.betterthanwarfare.MinigunAmmo.desc=Ammunition for the Minigun. Stores 1600 
 
 
 item.betterthanwarfare.IronBalls.name=Iron Balls
-item.betterthanwarfare.IronBalls.desc=Ammunition for primitive weaponry, make sure to have a leather sulfur pouch too!
+item.betterthanwarfare.IronBalls.desc=Ammunition for primitive weaponry, make sure to have a leather gunpowder pouch too!
 
-item.betterthanwarfare.LeatherSulfurPouch.name=Leather Sulfur Pouch
+item.betterthanwarfare.LeatherSulfurPouch.name=Leather Gunpowder Pouch
 item.betterthanwarfare.LeatherSulfurPouch.desc=Needed to reload primitive weaponry.
 
+item.betterthanwarfare.LeatherPouchEmpty.name=Empty Leather Pouch
+item.betterthanwarfare.LeatherPouchEmpty.desc=Can be filled with gunpowder, needed to fire some weaponry when filled.
+
 item.betterthanwarfare.FlintlockPistol.name=Flintlock Pistol
-item.betterthanwarfare.FlintlockPistol.desc=A flintlock pistol, shoots iron balls, and requires sulfur from a leather sulfur pouch.
+item.betterthanwarfare.FlintlockPistol.desc=A flintlock pistol, shoots iron balls, and requires gunpowder from a leather gunpowder pouch.
 
 item.betterthanwarfare.BlunderbussRifle.name=Blunderbuss Rifle
-item.betterthanwarfare.BlunderbussRifle.desc=A blunderbuss rifle, shoots iron balls, and requires sulfur from a leather sulfur pouch. WAY more accurate than the flintlock.
+item.betterthanwarfare.BlunderbussRifle.desc=A blunderbuss rifle, shoots iron balls, and requires gunpowder from a leather gunpowder pouch. WAY more accurate than the flintlock.
 
 item.betterthanwarfare.RevolverPistol.name=Revolver
 item.betterthanwarfare.RevolverPistol.desc=A revolver, shoots revolver ammo.
 
 item.betterthanwarfare.RevolverAmmo.name=Revolver Ammo
 item.betterthanwarfare.RevolverAmmo.desc=Ammunition for the Revolver.
-
-item.betterthanwarfare.KnightSword.name=Roaring Sword
-item.betterthanwarfare.KnightSword.desc=You shouldn't have this.
-
 
 # crafting components, tools
 item.betterthanwarfare.CraftingHammer.name=Iron Hammer
@@ -68,7 +67,7 @@ item.betterthanwarfare.PlateGold.desc=Used in various recipes, for weaponry.
 item.betterthanwarfare.CylinderSteel.name=Steel Cylinder
 item.betterthanwarfare.CylinderSteel.desc=Used in various recipes, for weaponry.
 
-item.betterthanwarfare.DustTinySulphur.name=Tiny Sulphur Pile
+item.betterthanwarfare.DustTinySulphur.name=Tiny Gunpowder Pile
 item.betterthanwarfare.DustTinySulphur.desc=Used in various recipes for weaponry.
 
 # crafting components, revolver
@@ -78,8 +77,8 @@ item.betterthanwarfare.RevolverCraftingBarrel.desc=Barrel for the revolver.
 item.betterthanwarfare.RevolverCraftingCylinder.name=Revolver Drum
 item.betterthanwarfare.RevolverCraftingCylinder.desc=Drum for the revolver.
 
-item.betterthanwarfare.RevolverCraftingGrip.name=Revolver Grip
-item.betterthanwarfare.RevolverCraftingGrip.desc=Grip for the revolver.
+item.betterthanwarfare.RevolverCraftingGrip.name=Wooden Grip
+item.betterthanwarfare.RevolverCraftingGrip.desc=A wooden grip, for weapons.
 
 # crafting components, revolver, ammo
 item.betterthanwarfare.RevolverCraftingBullet.name=Steel Bullet

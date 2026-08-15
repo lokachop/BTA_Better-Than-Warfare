@@ -1,12 +1,13 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
+import lokachop.betterthanwarfare.items.ranged.LeatherPouchGun;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
-public class FlintlockPistol extends BaseGun {
+public class FlintlockPistol extends LeatherPouchGun {
 	public FlintlockPistol(String translationKey, String namespaceId, int itemId) {
 		super(translationKey, namespaceId, itemId);
 	}

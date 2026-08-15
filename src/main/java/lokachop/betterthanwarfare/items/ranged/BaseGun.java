@@ -10,15 +10,22 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.hud.HudIngame;
 import net.minecraft.client.render.entity.EntityRendererItem;
 import net.minecraft.client.render.font.FontRenderer;
+import net.minecraft.client.render.item.model.ItemModelDispatcher;
+import net.minecraft.core.block.entity.TileEntityActivator;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
+import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
+import net.minecraft.core.world.generate.feature.tree.WorldFeatureTree;
+import net.minecraft.core.world.pos.TilePosc;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3dc;
 import turniplabs.halplibe.helper.EnvironmentHelper;
+
+import java.util.Random;
 
 public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCooldownItem {
 	public BaseGun(String translationKey, String namespaceId, int id) {
@@ -30,17 +37,17 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 	public void renderOverlay(HudIngame guiIngame, Player player, int height, int width, int mouseX, int mouseY, Gui gui, FontRenderer fontRenderer, EntityRendererItem itemRenderer) {
 		ContainerInventory inv = player.inventory;
 		ItemStack gun = inv.getCurrentItem();
-		int yCalc = height - 42;
+		int yCalc = height - 42 - 10;
 
 		int xCalc = (width / 2) - 64 - 24;
 		int currClip = gun.getData().getInteger("currClip");
 		gui.drawStringShadow(fontRenderer, "Clip: ", xCalc, yCalc, 0xFFFFFFFF);
 		gui.drawStringShadow(fontRenderer, String.valueOf(currClip), xCalc + fontRenderer.stringWidth("Clip: "), yCalc, currClip <= 0 ? 0xFFFF8080 : 0xFF80FF80);
 
-		int xCalc2 = (width / 2) + 64;
+		//int xCalc2 = (width / 2) + 64;
 		int currDelay = gun.getData().getInteger("delayTicks");
-		gui.drawStringShadow(fontRenderer, "Delay: ", xCalc2, yCalc, 0xFFFFFFFF);
-		gui.drawStringShadow(fontRenderer, String.valueOf(currDelay), xCalc2 + fontRenderer.stringWidth("Delay: "), yCalc, 0xFF8080FF);
+		//gui.drawStringShadow(fontRenderer, "Delay: ", xCalc2, yCalc, 0xFFFFFFFF);
+		//gui.drawStringShadow(fontRenderer, String.valueOf(currDelay), xCalc2 + fontRenderer.stringWidth("Delay: "), yCalc, 0xFF8080FF);
 
 		if(currDelay > 0) {
 			int oX = (width / 2) - (currDelay / 2);
@@ -79,6 +86,10 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 	}
 
 	public int spendAmmo(ItemStack itemstack) {
+		if(this.getAmmoType().equals("infinte")) {
+			return itemstack.getData().getInteger("currClip");
+		}
+
 		int currClip = itemstack.getData().getInteger("currClip");
 		itemstack.getData().putInt("currClip", --currClip);
 
@@ -151,6 +162,10 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 		return itemstack;
 	}
 
+	protected void shootBullets(World world) {
+
+	}
+
 	protected ItemStack doShoot(ItemStack itemstack, World world, Player player) {
 		if(!this.canShoot(itemstack)) {
 			this.setDelay(itemstack, 4);
@@ -195,6 +210,21 @@ public abstract class BaseGun extends Item implements IGunDetailsOverlay, INoCoo
 			return this.doShoot(itemstack, world, player);
 		}
 	}
+
+	/*
+	@Override
+	public void onUseByActivator(@NotNull ItemStack itemstack, @NotNull World world, @NotNull TileEntityActivator activator, @NotNull Random random, @NotNull TilePosc blockPos, @NotNull Direction direction, double offX, double offY, double offZ) {
+		if(this.isDelayed(itemstack)) {
+			return;
+		}
+
+		if(this.getCurrentClip(itemstack) <= 0 && !this.getAmmoType().equals("infinite")) {
+			return;
+		}
+
+		this.spendAmmo(itemstack);
+	}
+	 */
 
 	@Override
 	public void	inventoryTick(ItemStack itemstack, @NotNull World world, @NotNull Entity entity, int slotId, boolean flag) {

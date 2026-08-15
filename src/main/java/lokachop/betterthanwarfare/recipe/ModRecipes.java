@@ -32,7 +32,7 @@ public class ModRecipes extends RecipeRegistry {
 			.create("CraftingHammerRecipe", ModItems.CraftingHammerItem.getDefaultStack());
 
 		// iron plate
-		new RecipeBuilderShapedWilthTools(MOD_ID)
+		new RecipeBuilderShapedWithTools(MOD_ID)
 			.setShape(
 				"H",
 				"I")
@@ -41,7 +41,7 @@ public class ModRecipes extends RecipeRegistry {
 			.create("IronPlateRecipe", ModItems.PlateIronItem.getDefaultStack());
 
 		// steel plate
-		new RecipeBuilderShapedWilthTools(MOD_ID)
+		new RecipeBuilderShapedWithTools(MOD_ID)
 			.setShape(
 				"H",
 				"I")
@@ -50,7 +50,7 @@ public class ModRecipes extends RecipeRegistry {
 			.create("SteelPlateRecipe", ModItems.PlateSteelItem.getDefaultStack());
 
 		// gold plate
-		new RecipeBuilderShapedWilthTools(MOD_ID)
+		new RecipeBuilderShapedWithTools(MOD_ID)
 			.setShape(
 				"H",
 				"I")
@@ -75,7 +75,7 @@ public class ModRecipes extends RecipeRegistry {
 			.create("CraftingDiamondSawRecipe", ModItems.CraftingSawDiamondItem.getDefaultStack());
 
 		// steel cylinder
-		new RecipeBuilderShapedWilthTools(MOD_ID)
+		new RecipeBuilderShapedWithTools(MOD_ID)
 			.setShape(
 				"S",
 				"I")
@@ -85,7 +85,7 @@ public class ModRecipes extends RecipeRegistry {
 
 
 		// revolver
-		new RecipeBuilderShapedWilthTools(MOD_ID)
+		new RecipeBuilderShapedWithTools(MOD_ID)
 			.setShape(
 				"DXH",
 				"BCS",
@@ -98,6 +98,128 @@ public class ModRecipes extends RecipeRegistry {
 			.addInput('S', Items.INGOT_STEEL)
 			.addInput('G', ModItems.RevolverCraftingGripItem)
 			.create("RevolverRecipe", ModItems.RevolverPistolItem.getDefaultStack());
+
+		// sulfur recipes
+		ItemStack tinySulphur = ModItems.DustTinySulphurItem.getDefaultStack();
+		tinySulphur.stackSize = 6;
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(Items.GUNPOWDER)
+			.create("TinySulfurRecipe", tinySulphur);
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"SS",
+				"SS",
+				"SS")
+			.addInput('S', ModItems.DustTinySulphurItem)
+			.create("TinySulfurCompact", Items.GUNPOWDER.getDefaultStack());
+
+		// pouch recipes
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				" LS",
+				"LLL",
+				" L ")
+			.addInput('S', Items.STRING)
+			.addInput('L', Items.LEATHER)
+			.create("EmptyLeatherPouchRecipe", ModItems.LeatherPouchEmptyItem.getDefaultStack());
+
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(ModItems.LeatherPouchEmptyItem)
+			.addInput(ModItems.DustTinySulphurItem)
+			.addInput(ModItems.DustTinySulphurItem)
+			.create("FillLeatherPouchRecipe", ModItems.LeatherSulfurPouchItem);
+
+		// REVOLVER items
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"WW ",
+				" WW",
+				" WW")
+			.addInput('W', "minecraft:planks")
+			.create("RevolverGripRecipe", ModItems.RevolverCraftingGripItem.getDefaultStack());
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"PPP",
+				"SSS",
+				"PPP")
+			.addInput('P', ModItems.PlateSteelItem)
+			.addInput('S', Items.INGOT_STEEL)
+			.create("RevolverBarrelRecipe", ModItems.RevolverCraftingBarrelItem.getDefaultStack());
+
+		new RecipeBuilderShapedWithTools(MOD_ID)
+			.setShape(
+				"PPS",
+				"CCH",
+				"PP ")
+			.addInput('S', MOD_ID + ":crafting_saws")
+			.addInput('H', MOD_ID + ":crafting_hammers")
+			.addInput('P', ModItems.PlateSteelItem)
+			.addInput('C', ModItems.CylinderSteelItem)
+			.create("RevolverCylinderRecipe", ModItems.RevolverCraftingCylinderItem.getDefaultStack());
+
+
+		// FLINTLOCK recipe
+		new RecipeBuilderShapedWithTools(MOD_ID)
+			.setShape(
+				"IPH",
+				"SIP",
+				"  G")
+			.addInput('I', Items.INGOT_IRON)
+			.addInput('P', ModItems.PlateIronItem)
+			.addInput('H', MOD_ID + ":crafting_hammers")
+			.addInput('S', MOD_ID + ":crafting_saws")
+			.addInput('G', ModItems.RevolverCraftingGripItem)
+			.create("FlintlockRecipe", ModItems.FlintlockPistolItem.getDefaultStack());
+
+
+		// BLUNDERBUSS recipe
+		new RecipeBuilderShapedWithTools(MOD_ID)
+			.setShape(
+				"PPI",
+				"IIW",
+				"HSG")
+			.addInput('I', Items.INGOT_STEEL)
+			.addInput('P', ModItems.PlateIronItem)
+			.addInput('H', MOD_ID + ":crafting_hammers")
+			.addInput('S', MOD_ID + ":crafting_saws")
+			.addInput('G', ModItems.RevolverCraftingGripItem)
+			.addInput('W', "minecraft:planks")
+			.create("BlunderbussRecipe", ModItems.BlunderbussRifleItem.getDefaultStack());
+
+		// AMMO, revolver
+		ItemStack revolverCasing = ModItems.RevolverCraftingCasingItem.getDefaultStack();
+		revolverCasing.stackSize = 12;
+		new RecipeBuilderShapedWithTools(MOD_ID)
+			.setShape(
+				"H",
+				"P",
+				"P")
+			.addInput('H', MOD_ID + ":crafting_hammers")
+			.addInput('P', ModItems.PlateGoldItem)
+			.create("RevolverCasingRecipe", revolverCasing);
+
+		ItemStack revolverBullet = ModItems.RevolverCraftingBulletItem.getDefaultStack();
+		revolverBullet.stackSize = 4;
+		new RecipeBuilderShapedWithTools(MOD_ID)
+			.setShape(
+				"SC")
+			.addInput('S', MOD_ID + ":crafting_saws")
+			.addInput('C', ModItems.CylinderSteelItem)
+			.create("RevolverBulletRecipe", revolverBullet);
+
+		ItemStack revolverAmmo = ModItems.RevolverAmmoItem.getDefaultStack();
+		revolverAmmo.stackSize = 4;
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"B",
+				"G",
+				"C")
+			.addInput('B', ModItems.RevolverCraftingBulletItem)
+			.addInput('G', ModItems.DustTinySulphurItem)
+			.addInput('C', ModItems.RevolverCraftingCasingItem)
+			.create("RevolverAmmoRecipe", revolverAmmo);
 	}
 
 	private static void registerLists() {

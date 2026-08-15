@@ -9,29 +9,29 @@ import net.minecraft.core.item.ItemStack;
 import turniplabs.halplibe.helper.RecipeBuilder;
 import turniplabs.halplibe.helper.recipeBuilders.RecipeBuilderShaped;
 
-public class RecipeBuilderShapedWilthTools extends RecipeBuilderShaped {
-	public RecipeBuilderShapedWilthTools(String modID) {
+public class RecipeBuilderShapedWithTools extends RecipeBuilderShaped {
+	public RecipeBuilderShapedWithTools(String modID) {
 		super(modID);
 	}
 
-	public RecipeBuilderShapedWilthTools(String modID, String... shape) {
+	public RecipeBuilderShapedWithTools(String modID, String... shape) {
 		super(modID, shape);
 	}
 
 	@Override
-	public RecipeBuilderShapedWilthTools setShape(String... shapeTemplate) {
-		return (RecipeBuilderShapedWilthTools) super.setShape(shapeTemplate);
+	public RecipeBuilderShapedWithTools setShape(String... shapeTemplate) {
+		return (RecipeBuilderShapedWithTools) super.setShape(shapeTemplate);
 	}
 
 
 	@Override
-	public RecipeBuilderShapedWilthTools addInput(char templateSymbol, ItemStack stack) {
-		return (RecipeBuilderShapedWilthTools) super.addInput(templateSymbol, stack);
+	public RecipeBuilderShapedWithTools addInput(char templateSymbol, ItemStack stack) {
+		return (RecipeBuilderShapedWithTools) super.addInput(templateSymbol, stack);
 	}
 
 	@Override
-	public RecipeBuilderShapedWilthTools addInput(char templateSymbol, IItemConvertible stack) {
-		return (RecipeBuilderShapedWilthTools) super.addInput(templateSymbol, stack);
+	public RecipeBuilderShapedWithTools addInput(char templateSymbol, IItemConvertible stack) {
+		return (RecipeBuilderShapedWithTools) super.addInput(templateSymbol, stack);
 	}
 
 	@Override

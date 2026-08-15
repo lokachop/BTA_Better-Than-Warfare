@@ -1,14 +1,15 @@
 package lokachop.betterthanwarfare.items.ranged;
 
+import lokachop.betterthanwarfare.ModItems;
+import lokachop.betterthanwarfare.items.ammo.LeatherPouchEmpty;
+import lokachop.betterthanwarfare.items.ammo.LeatherSulfurPouch;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
 import net.minecraft.core.world.World;
 
-import static lokachop.betterthanwarfare.BetterThanWarfareMod.LOGGER;
-
-public abstract class MagGun extends BaseGun {
-	public MagGun(String translationKey, String namespaceId, int id) {
+public abstract class LeatherPouchGun extends BaseGun {
+	public LeatherPouchGun(String translationKey, String namespaceId, int id) {
 		super(translationKey, namespaceId, id);
 	}
 
@@ -31,11 +32,40 @@ public abstract class MagGun extends BaseGun {
 			return itemstack;
 		}
 
+		boolean hasLeatherPouch = false;
 		int totalReloaded = 0;
 		int reloadAmount = this.getClipSize() - currClip;
 		if(player != null) {
 			ContainerInventory inv = player.inventory;
 			int invSz = inv.getContainerSize();
+
+			// leather pouch check
+			for(int i = 0; i < invSz; i++) {
+				ItemStack item = inv.getItem(i);
+				if (item == null) {
+					continue;
+				}
+
+				if(!(item.getItem() instanceof LeatherSulfurPouch)) {
+					continue;
+				}
+
+				// WE FOUND A POUCH, damage it
+				hasLeatherPouch = true;
+
+				item.setMetadata(item.getMetadata() + 1);
+				if(item.getMetadata() >= item.getMaxDamage()) {
+					item.setMetadata(0);
+					inv.removeItem(i, 1);
+					inv.setItem(i, ModItems.LeatherPouchEmptyItem.getDefaultStack());
+				}
+
+				break;
+			}
+
+			if(!hasLeatherPouch) {
+				return itemstack;
+			}
 
 			for(int i = 0; i < invSz; i++) {
 				ItemStack item = inv.getItem(i);
@@ -47,20 +77,11 @@ public abstract class MagGun extends BaseGun {
 					continue;
 				}
 
-				int ammoOnThatStack = item.getMaxDamage() - item.getMetadata();
+				int ammoOnThatStack = item.stackSize;
 				int maxCanTake = Math.min(reloadAmount, ammoOnThatStack);
-
-				if(maxCanTake > 0) {
-					totalReloaded += maxCanTake;
-					reloadAmount -= maxCanTake;
-
-					item.setMetadata(item.getMetadata() + maxCanTake);
-				}
-
-				if(item.getMetadata() >= item.getMaxDamage()) {
-					item.setMetadata(0);
-					inv.removeItem(i, 1);
-				}
+				totalReloaded += maxCanTake;
+				reloadAmount -= maxCanTake;
+				inv.removeItem(i, maxCanTake);
 			}
 		}
 
@@ -74,5 +95,4 @@ public abstract class MagGun extends BaseGun {
 
 		return itemstack;
 	}
-
 }

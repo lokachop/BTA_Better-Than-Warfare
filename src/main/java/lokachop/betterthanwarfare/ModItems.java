@@ -5,7 +5,6 @@ import lokachop.betterthanwarfare.items.ammo.modern.MinigunAmmo;
 import lokachop.betterthanwarfare.items.craftingcomponent.CraftingHammer;
 import lokachop.betterthanwarfare.items.craftingcomponent.CraftingSaw;
 import lokachop.betterthanwarfare.items.craftingcomponent.CraftingSawDiamond;
-import lokachop.betterthanwarfare.items.melee.admin.KnightSword;
 import lokachop.betterthanwarfare.items.ranged.modern.AKRifle;
 import lokachop.betterthanwarfare.items.ranged.modern.FlightMinigun;
 import lokachop.betterthanwarfare.items.ranged.modern.Pistol;
@@ -90,10 +89,10 @@ public class ModItems {
 	public static Item RevolverAmmoItem;
 	public static Item RevolverPistolItem;
 
-	public static Item KnightSwordItem;
-
 	public static Item MinigunAmmoItem;
 	public static Item MinigunMachinegunItem;
+
+	public static Item LeatherPouchEmptyItem;
 	public static void RegisterItems() {
 		BetterThanWarfareMod.LOGGER.info("Registering items...");
 
@@ -130,10 +129,10 @@ public class ModItems {
 		RevolverAmmoItem = basicItem("RevolverAmmo", "ammo/primitive/revolver_ammo");
 		RevolverPistolItem = basicGun(new RevolverPistol("RevolverPistol", namespaceConvert("RevolverPistol"), newItemID()), "gun/primitive/revolver");
 
-		KnightSwordItem = basicMelee(new KnightSword("KnightSword", namespaceConvert("KnightSword"), newItemID()), "melee/admin/knight_sword");
-
 		MinigunAmmoItem = advancedItem(new MinigunAmmo("MinigunAmmo", namespaceConvert("MinigunAmmo"), newItemID()), "ammo/modern/minigun_ammo");
 		MinigunMachinegunItem = basicGun(new FlightMinigun("FlightMinigun", namespaceConvert("FlightMinigun"), newItemID()), "gun/modern/minigun");
+
+		LeatherPouchEmptyItem = basicItem("LeatherPouchEmpty", "ammo/primitive/leather_pouch_empty");
 
 		BetterThanWarfareMod.LOGGER.info("Done, {} IDs spent...", lastItemID - 29000);
 	}

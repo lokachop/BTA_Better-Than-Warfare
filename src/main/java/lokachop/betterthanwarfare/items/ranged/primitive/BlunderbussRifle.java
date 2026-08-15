@@ -1,6 +1,7 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
+import lokachop.betterthanwarfare.items.ranged.LeatherPouchGun;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.core.entity.player.Player;
@@ -11,7 +12,7 @@ import org.joml.Vector3dc;
 
 import static lokachop.betterthanwarfare.BetterThanWarfareMod.MOD_ID;
 
-public class BlunderbussRifle extends BaseGun {
+public class BlunderbussRifle extends LeatherPouchGun {
 	public BlunderbussRifle(String translationKey, String namespaceId, int itemId) {
 		super(translationKey, namespaceId, itemId);
 	}
