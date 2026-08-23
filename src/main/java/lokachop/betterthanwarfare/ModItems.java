@@ -24,7 +24,7 @@ public class ModItems {
 	public static HashMap<Item, String> gunTextures = new HashMap<>();
 	public static HashMap<Item, String> meleeTextures = new HashMap<>();
 
-	private static int lastItemID = 29000;
+	private static int lastItemID = ModConfig.getItemIDRoot();
 	private static int newItemID() {
 		return lastItemID++;
 	}

@@ -27,6 +27,8 @@ public class BetterThanWarfareMod implements ModInitializer {
 		LOGGER.info("BetterThanWarfare initializing...");
 		HalpLibe.registerMod(MOD_ID);
 
+		new ModConfig();
+
 		CommonEvents.BEFORE_GAME_START.listen(Key.of(MOD_ID), this::beforeGameStart);
 		CommonEvents.AFTER_GAME_START.listen(Key.of(MOD_ID), this::afterGameStart);
 		//CommonEvents.AFTER_BLOCK_INIT.listen(Key.of(MOD_ID), this::afterBlockInit);
