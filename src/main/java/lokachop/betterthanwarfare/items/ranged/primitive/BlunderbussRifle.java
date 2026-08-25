@@ -1,5 +1,6 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
+import lokachop.betterthanwarfare.ModConfig;
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
 import lokachop.betterthanwarfare.items.ranged.LeatherPouchGun;
 import net.fabricmc.api.EnvType;
@@ -44,7 +45,7 @@ public class BlunderbussRifle extends LeatherPouchGun {
 
 	@Override
 	public int getBulletDamage() {
-		return 20;
+		return ModConfig.getWeaponDamage("Blunderbuss");
 	}
 
 	@Override

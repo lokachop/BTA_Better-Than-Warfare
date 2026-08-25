@@ -1,5 +1,6 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
+import lokachop.betterthanwarfare.ModConfig;
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -38,7 +39,7 @@ public class RevolverPistol extends BaseGun {
 
 	@Override
 	public int getBulletDamage() {
-		return 8;
+		return ModConfig.getWeaponDamage("Revolver");
 	}
 
 	@Override

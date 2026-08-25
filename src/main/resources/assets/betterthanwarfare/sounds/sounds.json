@@ -94,16 +94,7 @@
     ]
   },
 
-  "melee.knightsword": {
-    "subtitle": "subtitles.betterthanwarfare.melee.knightsword",
-    "sounds": [
-      "admin/sword/snd_knight_cut.ogg",
-      "admin/sword/snd_knight_cut2.ogg"
-    ]
-  },
-
   "gun.shot.minigun":{
-    "subtitle": "subtitles.betterthanwarfare.gun.shot.minigun",
     "sounds": [
       "minigun/shot1.ogg",
       "minigun/shot2.ogg",

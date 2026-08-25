@@ -11,6 +11,7 @@ import net.minecraft.core.data.registry.recipe.entry.RecipeEntryCrafting;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import turniplabs.halplibe.helper.RecipeBuilder;
+import turniplabs.halplibe.helper.recipeBuilders.RecipeBuilderShaped;
 
 import java.util.List;
 
@@ -21,78 +22,52 @@ public class ModRecipes extends RecipeRegistry {
 	public static final RecipeNamespace BETTERTHANWARFARE = new RecipeNamespace();
 
 	public static void InitRecipes() {
-		// hammer recipe
+		// iron plate
+		ItemStack ironPlates = ModItems.PlateIronItem.getDefaultStack();
+		ironPlates.stackSize = 3;
 		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"II ",
-				"IIS",
-				"II ")
+				"III")
 			.addInput('I', Items.INGOT_IRON)
-			.addInput('S', Items.STICK)
-			.create("CraftingHammerRecipe", ModItems.CraftingHammerItem.getDefaultStack());
-
-		// iron plate
-		new RecipeBuilderShapedWithTools(MOD_ID)
-			.setShape(
-				"H",
-				"I")
-			.addInput('H', MOD_ID + ":crafting_hammers")
-			.addInput('I', Items.INGOT_IRON)
-			.create("IronPlateRecipe", ModItems.PlateIronItem.getDefaultStack());
+			.create("IronPlateRecipe", ironPlates);
 
 		// steel plate
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		ItemStack steelPlates = ModItems.PlateSteelItem.getDefaultStack();
+		steelPlates.stackSize = 3;
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"H",
-				"I")
-			.addInput('H', MOD_ID + ":crafting_hammers")
-			.addInput('I', Items.INGOT_STEEL)
-			.create("SteelPlateRecipe", ModItems.PlateSteelItem.getDefaultStack());
+				"SSS")
+			.addInput('S', Items.INGOT_STEEL)
+			.create("SteelPlateRecipe", steelPlates);
 
 		// gold plate
-		new RecipeBuilderShapedWithTools(MOD_ID)
-			.setShape(
-				"H",
-				"I")
-			.addInput('H', MOD_ID + ":crafting_hammers")
-			.addInput('I', Items.INGOT_GOLD)
-			.create("GoldPlateRecipe", ModItems.PlateGoldItem.getDefaultStack());
-
-		// iron saw recipe
+		ItemStack goldPlates = ModItems.PlateGoldItem.getDefaultStack();
+		goldPlates.stackSize = 3;
 		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"PPS")
-			.addInput('P', ModItems.PlateIronItem)
-			.addInput('S', Items.STICK)
-			.create("CraftingIronSawRecipe", ModItems.CraftingSawItem.getDefaultStack());
-
-		// diamond saw recipe
-		RecipeBuilder.Shaped(MOD_ID)
-			.setShape(
-				"DDS")
-			.addInput('D', Items.DIAMOND)
-			.addInput('S', Items.STICK)
-			.create("CraftingDiamondSawRecipe", ModItems.CraftingSawDiamondItem.getDefaultStack());
+				"GGG")
+			.addInput('G', Items.INGOT_GOLD)
+			.create("GoldPlateRecipe", goldPlates);
 
 		// steel cylinder
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		ItemStack steelCylinders = ModItems.CylinderSteelItem.getDefaultStack();
+		steelCylinders.stackSize = 4;
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"S",
-				"I")
-			.addInput('S', MOD_ID + ":crafting_saws")
-			.addInput('I', Items.INGOT_STEEL)
-			.create("SteelCylinderRecipe", ModItems.CylinderSteelItem.getDefaultStack());
+				"SS",
+				"SS")
+			.addInput('S', Items.INGOT_STEEL)
+			.create("SteelCylinderRecipe", steelCylinders);
 
 
 		// revolver
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"DXH",
+				"DXX",
 				"BCS",
 				"  G")
-			.addInput('D', ModItems.CraftingSawDiamondItem)
+			.addInput('D', Items.DIAMOND)
 			.addInput('X', Items.INGOT_STEEL_CRUDE)
-			.addInput('H', ModItems.CraftingHammerItem)
 			.addInput('B', ModItems.RevolverCraftingBarrelItem)
 			.addInput('C', ModItems.RevolverCraftingCylinderItem)
 			.addInput('S', Items.INGOT_STEEL)
@@ -148,42 +123,36 @@ public class ModRecipes extends RecipeRegistry {
 			.addInput('S', Items.INGOT_STEEL)
 			.create("RevolverBarrelRecipe", ModItems.RevolverCraftingBarrelItem.getDefaultStack());
 
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"PPS",
-				"CCH",
-				"PP ")
-			.addInput('S', MOD_ID + ":crafting_saws")
-			.addInput('H', MOD_ID + ":crafting_hammers")
+				"PP",
+				"CC",
+				"PP")
 			.addInput('P', ModItems.PlateSteelItem)
 			.addInput('C', ModItems.CylinderSteelItem)
 			.create("RevolverCylinderRecipe", ModItems.RevolverCraftingCylinderItem.getDefaultStack());
 
 
 		// FLINTLOCK recipe
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"IPH",
-				"SIP",
+				"IP ",
+				" IP",
 				"  G")
 			.addInput('I', Items.INGOT_IRON)
 			.addInput('P', ModItems.PlateIronItem)
-			.addInput('H', MOD_ID + ":crafting_hammers")
-			.addInput('S', MOD_ID + ":crafting_saws")
 			.addInput('G', ModItems.RevolverCraftingGripItem)
 			.create("FlintlockRecipe", ModItems.FlintlockPistolItem.getDefaultStack());
 
 
 		// BLUNDERBUSS recipe
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
 				"PPI",
 				"IIW",
-				"HSG")
+				"  G")
 			.addInput('I', Items.INGOT_STEEL)
 			.addInput('P', ModItems.PlateIronItem)
-			.addInput('H', MOD_ID + ":crafting_hammers")
-			.addInput('S', MOD_ID + ":crafting_saws")
 			.addInput('G', ModItems.RevolverCraftingGripItem)
 			.addInput('W', "minecraft:planks")
 			.create("BlunderbussRecipe", ModItems.BlunderbussRifleItem.getDefaultStack());
@@ -191,21 +160,19 @@ public class ModRecipes extends RecipeRegistry {
 		// AMMO, revolver
 		ItemStack revolverCasing = ModItems.RevolverCraftingCasingItem.getDefaultStack();
 		revolverCasing.stackSize = 12;
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"H",
 				"P",
 				"P")
-			.addInput('H', MOD_ID + ":crafting_hammers")
 			.addInput('P', ModItems.PlateGoldItem)
 			.create("RevolverCasingRecipe", revolverCasing);
 
 		ItemStack revolverBullet = ModItems.RevolverCraftingBulletItem.getDefaultStack();
 		revolverBullet.stackSize = 4;
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"SC")
-			.addInput('S', MOD_ID + ":crafting_saws")
+				"XC")
+			.addInput('X', Items.INGOT_STEEL_CRUDE)
 			.addInput('C', ModItems.CylinderSteelItem)
 			.create("RevolverBulletRecipe", revolverBullet);
 
@@ -223,13 +190,11 @@ public class ModRecipes extends RecipeRegistry {
 
 		ItemStack ironBalls = ModItems.IronBallsItem.getDefaultStack();
 		ironBalls.stackSize = 6;
-		new RecipeBuilderShapedWithTools(MOD_ID)
+		RecipeBuilder.Shaped(MOD_ID)
 			.setShape(
-				"SPH",
+				" P ",
 				"PIP",
 				" P ")
-			.addInput('S', MOD_ID + ":crafting_saws")
-			.addInput('H', MOD_ID + ":crafting_hammers")
 			.addInput('P', ModItems.PlateIronItem)
 			.addInput('I', Items.INGOT_IRON)
 			.create("IronBallsRecipe", ironBalls);

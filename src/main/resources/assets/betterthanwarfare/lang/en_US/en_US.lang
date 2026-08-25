@@ -86,3 +86,27 @@ item.betterthanwarfare.RevolverCraftingBullet.desc=A steel bullet, used to make 
 
 item.betterthanwarfare.RevolverCraftingCasing.name=Gold Casing
 item.betterthanwarfare.RevolverCraftingCasing.desc=A gold casing, used to make ammo.
+
+# subtitles
+subtitles.betterthanwarfare.gun.shot.generic=Generic Gunshot
+subtitles.betterthanwarfare.gun.dryfire.generic=Generic Gun Dry Firing
+subtitles.betterthanwarfare.gun.reload.generic=Generic Gun Reloading
+
+subtitles.betterthanwarfare.gun.shot.ak=AK47 Gunshot
+subtitles.betterthanwarfare.gun.dryfire.ak=AK47 Dry Firing
+subtitles.betterthanwarfare.gun.reload.ak=AK47 Reloading
+
+subtitles.betterthanwarfare.gun.shot.flintlock=Flintlock Gunshot
+subtitles.betterthanwarfare.gun.dryfire.flintlock=Flintlock Dry Firing
+subtitles.betterthanwarfare.gun.reload.flintlock=Flintlock Reloading
+
+subtitles.betterthanwarfare.gun.shot.blunderbuss=Blunderbuss Gunshot
+subtitles.betterthanwarfare.gun.dryfire.blunderbuss=Blunderbuss Dry Firing
+subtitles.betterthanwarfare.gun.reload.blunderbuss=Blunderbuss Reloading
+
+subtitles.betterthanwarfare.gun.shot.revolver=Revolver Gunshot
+subtitles.betterthanwarfare.gun.dryfire.revolver=Revolver Dry Firing
+subtitles.betterthanwarfare.gun.reload.revolver=Revolver Reloading
+
+subtitles.betterthanwarfare.gun.dryfire.minigun=Minigun Dry Firing
+subtitles.betterthanwarfare.gun.reload.minigun=Minigun Reloading

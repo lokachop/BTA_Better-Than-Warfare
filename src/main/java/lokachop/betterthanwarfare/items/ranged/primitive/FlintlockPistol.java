@@ -1,5 +1,6 @@
 package lokachop.betterthanwarfare.items.ranged.primitive;
 
+import lokachop.betterthanwarfare.ModConfig;
 import lokachop.betterthanwarfare.items.ranged.BaseGun;
 import lokachop.betterthanwarfare.items.ranged.LeatherPouchGun;
 import net.fabricmc.api.EnvType;
@@ -39,7 +40,7 @@ public class FlintlockPistol extends LeatherPouchGun {
 
 	@Override
 	public int getBulletDamage() {
-		return 8;
+		return ModConfig.getWeaponDamage("Flintlock");
 	}
 
 	@Override
